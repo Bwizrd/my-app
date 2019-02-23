@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>A List of Names</h2>
+    <h2 v-text="title" />
       {{ nameIsGreat }}
       <input
         v-model="name">
@@ -10,7 +10,12 @@
 
 <script>
   export default {
-
+    props: {
+      title: {
+        type: String,
+        default: 'Default Title',
+      }
+    },
     name: 'Names',
     data: () => ({
       name: 'Paul',

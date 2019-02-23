@@ -2,7 +2,7 @@
   <div id="app">
    <p>is this working?</p>
    <Header />
-   <Names />
+   <Names/>
   </div>
 </template>
 
