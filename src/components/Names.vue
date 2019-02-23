@@ -1,9 +1,18 @@
 <template>
   <div>
     <h2 v-text="title" />
-      {{ nameIsGreat }}
+
+    <ul>
+      <li v-for="name in names" :key="name  ">
+        {{ name }}
+      </li>
+    </ul>
+
       <input
         v-model="name">
+        <h1>{{ name }}</h1>
+
+        <button @click="onClick" >Add</button>
   </div>
 
 </template>
@@ -18,12 +27,17 @@
     },
     name: 'Names',
     data: () => ({
-      name: 'Paul',
-      names: ['Paul', 'Andy', 'Stuart']
+      name: ''
     }),
     computed: {
-      nameIsGreat() {
-        return this.name + ' is Great'
+      names() {
+        return this.$store.state.names
+      }
+    },
+    methods: {
+      onClick(){
+        // this.$store.commit('addName', this.name);
+        this.$store.dispatch('slowAddName', this.name);
       }
     }
   }
